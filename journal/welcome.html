@@ -8,19 +8,39 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    try { document.documentElement.dataset.theme = localStorage.getItem('reading-theme') || 'day'; }
+    catch (e) { document.documentElement.dataset.theme = 'day'; }
+  </script>
   <style>
-    :root{--ink:#27231f;--muted:#756f68;--paper:#f7f2e9;--line:#ddd2c3;--accent:#6f5144;--card:#fffdf8}
-    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.85}a{color:inherit}
+    :root{--ink:#27231f;--muted:#756f68;--paper:#f7f2e9;--line:#ddd2c3;--accent:#6f5144;--card:#fffdf8;--header-bg:rgba(247,242,233,.95)}
+    :root[data-theme="night"]{--ink:#f2ece4;--muted:#beb4aa;--paper:#171513;--line:#403832;--accent:#d5ab90;--card:#211e1b;--header-bg:rgba(23,21,19,.95)}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.85;transition:background .2s ease,color .2s ease}a{color:inherit}
     .wrap{width:min(820px,calc(100% - 40px));margin:auto}
-    header{border-bottom:1px solid rgba(111,81,68,.13)}nav{height:72px;display:flex;align-items:center;justify-content:space-between}.brand{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.45rem;text-decoration:none}
-    .back{text-decoration:none;color:var(--muted)}main{padding:76px 0 100px}.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:.75rem;color:var(--accent);font-weight:600}
+    header{border-bottom:1px solid var(--line);background:var(--header-bg);position:sticky;top:0;z-index:20;backdrop-filter:blur(10px)}nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.45rem;text-decoration:none}
+    .nav-actions{display:flex;align-items:center;gap:14px}.back{text-decoration:none;color:var(--muted)}
+    .theme-toggle{display:inline-flex;align-items:center;padding:3px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
+    .theme-toggle button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:.78rem;font-weight:600;padding:7px 10px;border-radius:999px;cursor:pointer}
+    .theme-toggle button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+    .theme-toggle button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+    main{padding:76px 0 100px}.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:.75rem;color:var(--accent);font-weight:600}
     h1{font-family:"Cormorant Garamond",serif;font-size:clamp(3.3rem,8vw,6.2rem);line-height:.98;margin:12px 0 18px;font-weight:600}.meta{color:var(--muted);margin-bottom:42px}
     article{font-family:"Cormorant Garamond",serif;font-size:1.55rem}.lead{font-size:1.85rem}.rule{height:1px;background:var(--line);margin:52px 0 34px}.comments-title{font-family:"Cormorant Garamond",serif;font-size:2.4rem;margin:0 0 8px}.comments-note{color:var(--muted);margin:0 0 24px}
-    footer{border-top:1px solid rgba(111,81,68,.13);padding:34px 0 50px;color:var(--muted);font-size:.9rem}
+    footer{border-top:1px solid var(--line);padding:34px 0 50px;color:var(--muted);font-size:.9rem}
+    @media(max-width:620px){nav{align-items:flex-start;padding:14px 0}.nav-actions{flex-direction:column-reverse;align-items:flex-end;gap:7px}.theme-toggle button{padding:6px 8px}}
   </style>
 </head>
 <body>
-<header><div class="wrap"><nav><a class="brand" href="/">Jennifer Navis</a><a class="back" href="/journal/">← Journal</a></nav></div></header>
+<header><div class="wrap"><nav>
+  <a class="brand" href="/">Jennifer Navis</a>
+  <div class="nav-actions">
+    <a class="back" href="/journal/">← Journal</a>
+    <div class="theme-toggle" role="group" aria-label="Reading theme">
+      <button type="button" data-theme-choice="day" aria-pressed="true">☀ Day</button>
+      <button type="button" data-theme-choice="night" aria-pressed="false">☾ Night</button>
+    </div>
+  </div>
+</nav></div></header>
 <main><div class="wrap">
   <div class="eyebrow">Personal reflections</div>
   <h1>Late-Night Rambles, Gibberish, and Some Eureka Moments</h1>
@@ -107,22 +127,44 @@
   <div class="rule"></div>
   <h2 class="comments-title">Reader thoughts</h2>
   <p class="comments-note">React to this post or join the conversation below.</p>
-  <script src="https://giscus.app/client.js"
-        data-repo="jennifernavis1889-maker/jennifernavis.com"
-        data-repo-id="R_kgDOUulbyw"
-        data-category="Q&A"
-        data-category-id="DIC_kwDOUulby84DGqSr"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-  </script>
+  <div id="giscus-container"></div>
 </div></main>
 <footer><div class="wrap">© <span id="year"></span> Jennifer Navis. Thanks for reading.</div></footer>
-<script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+<script>
+  document.getElementById('year').textContent=new Date().getFullYear();
+
+  const themeButtons=document.querySelectorAll('[data-theme-choice]');
+  function giscusTheme(theme){return theme==='night'?'dark':'light'}
+  function updateGiscus(theme){
+    const frame=document.querySelector('iframe.giscus-frame');
+    if(frame){frame.contentWindow.postMessage({giscus:{setConfig:{theme:giscusTheme(theme)}}},'https://giscus.app')}
+  }
+  function applyReadingTheme(theme){
+    document.documentElement.dataset.theme=theme;
+    try{localStorage.setItem('reading-theme',theme)}catch(e){}
+    themeButtons.forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.themeChoice===theme)));
+    updateGiscus(theme);
+  }
+
+  const initialTheme=document.documentElement.dataset.theme||'day';
+  applyReadingTheme(initialTheme);
+  themeButtons.forEach(btn=>btn.addEventListener('click',()=>applyReadingTheme(btn.dataset.themeChoice)));
+
+  const g=document.createElement('script');
+  g.src='https://giscus.app/client.js';
+  g.async=true;
+  g.crossOrigin='anonymous';
+  g.setAttribute('data-repo','jennifernavis1889-maker/jennifernavis.com');
+  g.setAttribute('data-repo-id','R_kgDOUulbyw');
+  g.setAttribute('data-category','Q&A');
+  g.setAttribute('data-category-id','DIC_kwDOUulby84DGqSr');
+  g.setAttribute('data-mapping','pathname');
+  g.setAttribute('data-strict','0');
+  g.setAttribute('data-reactions-enabled','1');
+  g.setAttribute('data-emit-metadata','0');
+  g.setAttribute('data-input-position','bottom');
+  g.setAttribute('data-theme',giscusTheme(initialTheme));
+  g.setAttribute('data-lang','en');
+  document.getElementById('giscus-container').appendChild(g);
+</script>
 </body></html>
