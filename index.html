@@ -44,9 +44,10 @@
     .section-intro .lead{font-family:"Cormorant Garamond",serif;font-size:2.25rem;line-height:1.2;margin:14px 0 26px}
     .section-intro p{color:var(--muted);font-size:1.02rem}
     .book{display:grid;grid-template-columns:.72fr 1.28fr;gap:52px;align-items:center}
-    .cover{aspect-ratio:2/3;max-width:320px;margin:auto;background:linear-gradient(145deg,#332d29,#7b5f51);color:#fff;border-radius:8px;display:flex;flex-direction:column;justify-content:center;padding:34px;box-shadow:0 28px 60px rgba(35,29,26,.24)}
-    .cover small{letter-spacing:.16em;text-transform:uppercase;opacity:.75}
-    .cover strong{font-family:"Cormorant Garamond",serif;font-size:2.7rem;line-height:1.02;margin:18px 0}
+    .book-mark{max-width:340px;margin:auto;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:40px 34px;box-shadow:var(--shadow)}
+    .book-mark small{display:block;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600}
+    .book-mark strong{display:block;font-family:"Cormorant Garamond",serif;font-size:2.8rem;line-height:1.02;margin:18px 0 22px}
+    .book-mark span{color:var(--muted);font-size:.92rem}
     .book-copy p{color:var(--muted)}
     .book-lines p{font-family:"Cormorant Garamond",serif;font-size:1.45rem;color:var(--ink);margin:.55rem 0}
     .galdyr{background:var(--card)}
@@ -131,24 +132,23 @@
 
   <section id="books">
     <div class="wrap book">
-      <div class="cover" aria-label="Book cover placeholder">
-        <small>Jennifer Navis</small>
+      <div class="book-mark" aria-label="The Things I Don’t Say Aloud">
+        <small>Published poetry collection</small>
         <strong>The Things I Don’t Say Aloud</strong>
-        <small>Poetry</small>
+        <span>Jennifer Navis</span>
       </div>
       <div class="book-copy">
         <div class="eyebrow">Books</div>
         <h2>The Things I Don’t Say Aloud</h2>
-        <p>My first poetry collection began with a simple truth:</p>
+        <p>My first poetry collection began with a simple truth: there are so many things we feel deeply and never say.</p>
         <div class="book-lines">
-          <p>There are so many things we feel deeply and never say.</p>
           <p>The words we swallow.</p>
           <p>The conversations we replay after they are over.</p>
           <p>The people we miss without telling them.</p>
           <p>The versions of ourselves we leave behind.</p>
         </div>
         <p><em>The Things I Don’t Say Aloud</em> is a collection of those moments.</p>
-        <p>If you have ever carried a feeling you could not quite explain, perhaps you will find a little of yourself in these pages too.</p>
+        <p>If you have ever carried a feeling you could not quite explain, perhaps you will find a little of yourself here.</p>
         <p><strong>Available in paperback and eBook.</strong></p>
         <div class="btns" style="margin-top:22px">
           <a class="btn primary" href="https://www.amazon.in/Things-Dont-Say-Aloud/dp/9371561432" target="_blank" rel="noopener">Amazon</a>
