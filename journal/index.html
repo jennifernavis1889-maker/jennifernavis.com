@@ -8,27 +8,42 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    try { document.documentElement.dataset.theme = localStorage.getItem('reading-theme') || 'day'; }
+    catch (e) { document.documentElement.dataset.theme = 'day'; }
+  </script>
   <style>
-    :root{--ink:#27231f;--muted:#756f68;--paper:#f7f2e9;--card:#fffdf8;--line:#ddd2c3;--accent:#6f5144;--shadow:0 18px 50px rgba(45,35,28,.08)}
-    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.7} a{color:inherit;text-decoration:none}
+    :root{--ink:#27231f;--muted:#756f68;--paper:#f7f2e9;--card:#fffdf8;--line:#ddd2c3;--accent:#6f5144;--shadow:0 18px 50px rgba(45,35,28,.08);--header-bg:rgba(247,242,233,.95)}
+    :root[data-theme="night"]{--ink:#f2ece4;--muted:#beb4aa;--paper:#171513;--card:#211e1b;--line:#403832;--accent:#d5ab90;--shadow:0 18px 50px rgba(0,0,0,.22);--header-bg:rgba(23,21,19,.95)}
+    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.7;transition:background .2s ease,color .2s ease} a{color:inherit;text-decoration:none}
     .wrap{width:min(1050px,calc(100% - 40px));margin:auto}
-    header{border-bottom:1px solid rgba(111,81,68,.13);background:rgba(247,242,233,.95)}
-    nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    header{border-bottom:1px solid var(--line);background:var(--header-bg);position:sticky;top:0;z-index:20;backdrop-filter:blur(10px)}
+    nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
     .brand,h1,h2{font-family:"Cormorant Garamond",serif}.brand{font-weight:700;font-size:1.45rem}
-    .links{display:flex;gap:22px;font-size:.92rem}.links a:hover{color:var(--accent)}
+    .nav-right{display:flex;align-items:center;gap:18px}.links{display:flex;gap:22px;font-size:.92rem}.links a:hover{color:var(--accent)}
+    .theme-toggle{display:inline-flex;align-items:center;padding:3px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
+    .theme-toggle button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:.78rem;font-weight:600;padding:7px 10px;border-radius:999px;cursor:pointer}
+    .theme-toggle button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+    .theme-toggle button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     main{padding:78px 0 100px}.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:.75rem;color:var(--accent);font-weight:600}
     h1{font-size:clamp(3.5rem,8vw,6.6rem);line-height:1;margin:8px 0 18px;font-weight:600}.intro{max-width:720px;color:var(--muted);font-size:1.08rem}
     .grid{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;margin-top:46px}.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:var(--shadow)}
     .tag{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}.date{color:var(--muted);font-size:.9rem;margin-top:4px}
     .card h2{font-size:2.25rem;line-height:1.05;margin:16px 0 10px}.card p{color:var(--muted)}.read{font-weight:600}
     footer{border-top:1px solid rgba(111,81,68,.13);padding:34px 0 50px;color:var(--muted);font-size:.9rem}
-    @media(max-width:760px){.links{display:none}.grid{grid-template-columns:1fr}main{padding-top:54px}}
+    @media(max-width:760px){.links{display:none}.grid{grid-template-columns:1fr}main{padding-top:54px}.nav-right{gap:8px}.theme-toggle button{padding:7px 9px}}
   </style>
 </head>
 <body>
 <header><div class="wrap"><nav>
   <a class="brand" href="/">Jennifer Navis</a>
-  <div class="links"><a href="/#about">About</a><a href="/#books">Books</a><a href="/journal/">Journal</a><a href="/#contact">Contact</a></div>
+  <div class="nav-right">
+    <div class="links"><a href="/#about">About</a><a href="/#books">Books</a><a href="/journal/">Journal</a><a href="/#contact">Contact</a></div>
+    <div class="theme-toggle" role="group" aria-label="Reading theme">
+      <button type="button" data-theme-choice="day" aria-pressed="true">☀ Day</button>
+      <button type="button" data-theme-choice="night" aria-pressed="false">☾ Night</button>
+    </div>
+  </div>
 </nav></div></header>
 <main><div class="wrap">
   <div class="eyebrow">Journal</div>
@@ -46,5 +61,15 @@
   </div>
 </div></main>
 <footer><div class="wrap">© <span id="year"></span> Jennifer Navis. Thanks for reading.</div></footer>
-<script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+<script>
+  document.getElementById('year').textContent=new Date().getFullYear();
+  const themeButtons=document.querySelectorAll('[data-theme-choice]');
+  function applyReadingTheme(theme){
+    document.documentElement.dataset.theme=theme;
+    try{localStorage.setItem('reading-theme',theme)}catch(e){}
+    themeButtons.forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.themeChoice===theme)));
+  }
+  applyReadingTheme(document.documentElement.dataset.theme||'day');
+  themeButtons.forEach(btn=>btn.addEventListener('click',()=>applyReadingTheme(btn.dataset.themeChoice)));
+</script>
 </body></html>
