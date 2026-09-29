@@ -44,10 +44,9 @@
     .section-intro .lead{font-family:"Cormorant Garamond",serif;font-size:2.25rem;line-height:1.2;margin:14px 0 26px}
     .section-intro p{color:var(--muted);font-size:1.02rem}
     .book{display:grid;grid-template-columns:.72fr 1.28fr;gap:52px;align-items:center}
-    .book-mark{max-width:340px;margin:auto;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:40px 34px;box-shadow:var(--shadow)}
-    .book-mark small{display:block;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600}
-    .book-mark strong{display:block;font-family:"Cormorant Garamond",serif;font-size:2.8rem;line-height:1.02;margin:18px 0 22px}
-    .book-mark span{color:var(--muted);font-size:.92rem}
+    .book-cover-wrap{max-width:340px;margin:auto;text-align:center}
+    .book-cover{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 28px 60px rgba(35,29,26,.22);border:1px solid rgba(111,81,68,.12)}
+    .book-cover-caption{margin-top:14px;color:var(--muted);font-size:.84rem;letter-spacing:.08em;text-transform:uppercase}
     .book-copy p{color:var(--muted)}
     .book-lines p{font-family:"Cormorant Garamond",serif;font-size:1.45rem;color:var(--ink);margin:.55rem 0}
     .galdyr{background:var(--card)}
@@ -132,10 +131,9 @@
 
   <section id="books">
     <div class="wrap book">
-      <div class="book-mark" aria-label="The Things I Don’t Say Aloud">
-        <small>Published poetry collection</small>
-        <strong>The Things I Don’t Say Aloud</strong>
-        <span>Jennifer Navis</span>
+      <div class="book-cover-wrap">
+        <img class="book-cover" src="/the_things_i_don%27t_say_aloud.jpg" alt="Cover of The Things I Don’t Say Aloud by Jennifer Navis">
+        <div class="book-cover-caption">Published poetry collection</div>
       </div>
       <div class="book-copy">
         <div class="eyebrow">Books</div>
