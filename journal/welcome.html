@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Welcome to my journal — Jennifer Navis</title>
+  <meta name="description" content="Welcome to the journal of author Jennifer Navis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#27231f;--muted:#756f68;--paper:#f7f2e9;--line:#ddd2c3;--accent:#6f5144;--card:#fffdf8}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.85}a{color:inherit}
+    .wrap{width:min(820px,calc(100% - 40px));margin:auto}
+    header{border-bottom:1px solid rgba(111,81,68,.13)}nav{height:72px;display:flex;align-items:center;justify-content:space-between}.brand{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.45rem;text-decoration:none}
+    .back{text-decoration:none;color:var(--muted)}main{padding:76px 0 100px}.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:.75rem;color:var(--accent);font-weight:600}
+    h1{font-family:"Cormorant Garamond",serif;font-size:clamp(3.3rem,8vw,6.2rem);line-height:.98;margin:12px 0 18px;font-weight:600}.meta{color:var(--muted);margin-bottom:42px}
+    article{font-family:"Cormorant Garamond",serif;font-size:1.55rem}.lead{font-size:1.85rem}.rule{height:1px;background:var(--line);margin:52px 0 34px}.comments-title{font-family:"Cormorant Garamond",serif;font-size:2.4rem;margin:0 0 8px}.comments-note{color:var(--muted);margin:0 0 24px}
+    footer{border-top:1px solid rgba(111,81,68,.13);padding:34px 0 50px;color:var(--muted);font-size:.9rem}
+  </style>
+</head>
+<body>
+<header><div class="wrap"><nav><a class="brand" href="/">Jennifer Navis</a><a class="back" href="/journal/">← Journal</a></nav></div></header>
+<main><div class="wrap">
+  <div class="eyebrow">Journal note</div>
+  <h1>Welcome to my journal</h1>
+  <div class="meta">29 September 2026 · Jennifer Navis</div>
+
+  <article>
+    <p class="lead">This is a new little corner of the internet for the things I want to write before I know exactly what they will become.</p>
+    <p>There will be poems here. Stories. Personal reflections. Pieces from works in progress. Some things may eventually find their way into books. Others may simply belong to the week in which they were written.</p>
+    <p>I wanted a place that felt less like an announcement and more like an open notebook — somewhere I could return to regularly, write honestly, and let the work grow in public.</p>
+    <p>So, welcome. Read what stays with you. Leave a thought if you feel like it. And come back when there are more words.</p>
+  </article>
+
+  <div class="rule"></div>
+  <h2 class="comments-title">Reader thoughts</h2>
+  <p class="comments-note">React to this post or join the conversation below.</p>
+  <script src="https://giscus.app/client.js"
+        data-repo="jennifernavis1889-maker/jennifernavis.com"
+        data-repo-id="R_kgDOUulbyw"
+        data-category="Q&A"
+        data-category-id="DIC_kwDOUulby84DGqSr"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+  </script>
+</div></main>
+<footer><div class="wrap">© <span id="year"></span> Jennifer Navis. All rights reserved.</div></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+</body></html>
