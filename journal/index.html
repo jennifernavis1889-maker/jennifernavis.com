@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Journal — Jennifer Navis</title>
+  <meta name="description" content="Poetry, fiction, personal reflections and writing notes by Jennifer Navis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#27231f;--muted:#756f68;--paper:#f7f2e9;--card:#fffdf8;--line:#ddd2c3;--accent:#6f5144;--shadow:0 18px 50px rgba(45,35,28,.08)}
+    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.7} a{color:inherit;text-decoration:none}
+    .wrap{width:min(1050px,calc(100% - 40px));margin:auto}
+    header{border-bottom:1px solid rgba(111,81,68,.13);background:rgba(247,242,233,.95)}
+    nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand,h1,h2{font-family:"Cormorant Garamond",serif}.brand{font-weight:700;font-size:1.45rem}
+    .links{display:flex;gap:22px;font-size:.92rem}.links a:hover{color:var(--accent)}
+    main{padding:78px 0 100px}.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:.75rem;color:var(--accent);font-weight:600}
+    h1{font-size:clamp(3.5rem,8vw,6.6rem);line-height:1;margin:8px 0 18px;font-weight:600}.intro{max-width:720px;color:var(--muted);font-size:1.08rem}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:46px}.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:var(--shadow)}
+    .tag{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}.date{color:var(--muted);font-size:.9rem;margin-top:4px}
+    .card h2{font-size:2.25rem;line-height:1.05;margin:16px 0 10px}.card p{color:var(--muted)}.read{font-weight:600}
+    footer{border-top:1px solid rgba(111,81,68,.13);padding:34px 0 50px;color:var(--muted);font-size:.9rem}
+    @media(max-width:760px){.links{display:none}.grid{grid-template-columns:1fr}main{padding-top:54px}}
+  </style>
+</head>
+<body>
+<header><div class="wrap"><nav>
+  <a class="brand" href="/">Jennifer Navis</a>
+  <div class="links"><a href="/#about">About</a><a href="/#books">Books</a><a href="/journal/">Journal</a><a href="/#contact">Contact</a></div>
+</nav></div></header>
+<main><div class="wrap">
+  <div class="eyebrow">Journal</div>
+  <h1>Words in progress.</h1>
+  <p class="intro">Poetry, fiction, personal reflections and notes from the writing desk — a place for finished pieces, unfinished thoughts, and the beginnings of books.</p>
+
+  <div class="grid">
+    <article class="card">
+      <div class="tag">Journal note</div>
+      <div class="date">29 September 2026</div>
+      <h2><a href="/journal/welcome.html">Welcome to my journal</a></h2>
+      <p>A new home for my weekly writing — poems, stories, reflections and whatever refuses to stay unwritten.</p>
+      <a class="read" href="/journal/welcome.html">Read the post →</a>
+    </article>
+    <article class="card">
+      <div class="tag">Coming next</div>
+      <h2>Your next piece</h2>
+      <p>Your future posts will appear here with their own title, category, date and page — each with reactions and comments.</p>
+    </article>
+  </div>
+</div></main>
+<footer><div class="wrap">© <span id="year"></span> Jennifer Navis. All rights reserved.</div></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+</body></html>
