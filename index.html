@@ -63,6 +63,12 @@
     .contact-card h2{font-size:3.3rem}
     .contact-card p{color:#d8cec7;max-width:720px}
     footer{padding:36px 0 54px;color:var(--muted);font-size:.9rem}
+    .subscribe-nav{display:inline-block;border:1px solid var(--accent);border-radius:999px;padding:7px 16px;color:var(--accent);font-size:.88rem;font-weight:600;white-space:nowrap}
+    .subscribe-nav:hover{background:var(--accent);color:#fff}
+    #subscribe{scroll-margin-top:94px}
+    .newsletter-form{width:min(820px,100%);margin:0 auto}
+    .newsletter-section{padding:70px 0;background:var(--card)}
+    @media(max-width:480px){nav{gap:10px}.brand{font-size:1.25rem}.subscribe-nav{font-size:.79rem;padding:6px 10px}}
     @media(max-width:800px){
       .links{display:none}
       .hero,.book,.about,.contact-card,.galdyr-layout{grid-template-columns:1fr}
@@ -82,6 +88,7 @@
         <a href="/journal/">Journal</a>
         <a href="#contact">Contact</a>
       </div>
+      <a class="subscribe-nav" href="#subscribe">Subscribe</a>
     </nav>
   </div>
 </header>
@@ -185,6 +192,12 @@
         <p>Welcome!</p>
       </div>
     </div>
+  </section>
+
+  <section class="newsletter-section" aria-label="Letters from Jennifer subscription">
+    <div class="wrap"><div class="newsletter-form" id="subscribe" aria-label="Subscribe to Letters from Jennifer">
+    <script async data-uid="54e875fe75" src="https://jennifer-navis-2.kit.com/54e875fe75/index.js"></script>
+  </div></div>
   </section>
 
   <section id="contact">
