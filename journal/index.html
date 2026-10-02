@@ -31,6 +31,11 @@
     .tag{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}.date{color:var(--muted);font-size:.9rem;margin-top:4px}
     .card h2{font-size:2.25rem;line-height:1.05;margin:16px 0 10px}.card p{color:var(--muted)}.read{font-weight:600}
     footer{border-top:1px solid rgba(111,81,68,.13);padding:34px 0 50px;color:var(--muted);font-size:.9rem}
+    .subscribe-nav{display:inline-block;border:1px solid var(--accent);border-radius:999px;padding:6px 12px;color:var(--accent);font-size:.82rem;font-weight:600;white-space:nowrap}
+    .subscribe-nav:hover{background:var(--accent);color:var(--paper)}
+    #subscribe{scroll-margin-top:90px}
+    .newsletter-form{max-width:820px;margin:44px auto 0}
+    @media(max-width:460px){.subscribe-nav{padding:6px 9px;font-size:.76rem}.brand{font-size:1.23rem}}
     @media(max-width:760px){.links{display:none}.grid{grid-template-columns:1fr}main{padding-top:54px}.nav-right{gap:8px}.theme-toggle button{padding:7px 9px}}
   </style>
 </head>
@@ -39,6 +44,7 @@
   <a class="brand" href="/">Jennifer Navis</a>
   <div class="nav-right">
     <div class="links"><a href="/#about">About</a><a href="/#books">Books</a><a href="/journal/">Journal</a><a href="/#contact">Contact</a></div>
+    <a class="subscribe-nav" href="#subscribe">Subscribe</a>
     <div class="theme-toggle" role="group" aria-label="Reading theme">
       <button type="button" data-theme-choice="day" aria-pressed="true">☀ Day</button>
       <button type="button" data-theme-choice="night" aria-pressed="false">☾ Night</button>
@@ -65,6 +71,9 @@
       <p>A 1 a.m. game, five losses, two dogs, autocorrect gone rogue, and one small epiphany about problems, happiness and why winning gets boring when it becomes predictable.</p>
       <a class="read" href="/journal/welcome.html">Read the post →</a>
     </article>
+  </div>
+  <div class="newsletter-form" id="subscribe" aria-label="Subscribe to Letters from Jennifer">
+    <script async data-uid="54e875fe75" src="https://jennifer-navis-2.kit.com/54e875fe75/index.js"></script>
   </div>
 </div></main>
 <footer><div class="wrap">© <span id="year"></span> Jennifer Navis. Thanks for reading.</div></footer>
