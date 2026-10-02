@@ -24,7 +24,7 @@
     .brand{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.45rem;letter-spacing:.03em}
     .links{display:flex;gap:22px;font-size:.92rem}
     .links a:hover{color:var(--accent)}
-    .hero{min-height:78vh;display:grid;grid-template-columns:1.18fr .82fr;align-items:center;gap:48px;padding:80px 0}
+    .hero{min-height:65vh;display:grid;grid-template-columns:minmax(0,780px);align-items:center;padding:80px 0}
     .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:.75rem;color:var(--accent);font-weight:600}
     h1,h2,h3{font-family:"Cormorant Garamond",serif;line-height:1.06;margin:0}
     h1{font-size:clamp(3.6rem,8vw,7.4rem);font-weight:600;letter-spacing:-.03em}
@@ -36,9 +36,6 @@
     .btns{display:flex;gap:12px;flex-wrap:wrap}
     .btn{display:inline-block;padding:12px 18px;border:1px solid var(--ink);border-radius:999px;font-weight:600;font-size:.92rem}
     .btn.primary{background:var(--ink);color:white}
-    .quote-card{background:var(--card);padding:34px;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:28px}
-    .quote-card h2{font-size:2.8rem;margin:8px 0 20px}
-    .quote-card p{font-family:"Cormorant Garamond",serif;font-size:1.55rem;color:var(--ink);margin:.7rem 0}
     section{padding:88px 0;border-top:1px solid rgba(111,81,68,.13)}
     .section-intro{max-width:760px}
     .section-intro .lead{font-family:"Cormorant Garamond",serif;font-size:2.25rem;line-height:1.2;margin:14px 0 26px}
@@ -70,7 +67,6 @@
       .links{display:none}
       .hero,.book,.about,.contact-card,.galdyr-layout{grid-template-columns:1fr}
       .hero{padding:58px 0}
-      .quote-card{margin-top:8px}
       .contact-card{padding:30px}
     }
   </style>
@@ -105,15 +101,7 @@
       </div>
     </div>
 
-    <aside class="quote-card">
-      <div class="eyebrow">A place for the things we don’t always say</div>
-      <h2>Some things stay with us.</h2>
-      <p>For the thoughts that arrive late at night.</p>
-      <p>For the people we still think about.</p>
-      <p>For the questions we never answered.</p>
-      <p>For memories that soften with time, and the ones that don’t.</p>
-      <p>You’ll find all of that here.</p>
-    </aside>
+
   </div>
 
   <section id="journal">
