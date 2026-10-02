@@ -74,7 +74,9 @@
     .subscribe-nav{display:inline-block;border:1px solid var(--accent);border-radius:999px;padding:7px 16px;color:var(--accent);font-size:.88rem;font-weight:600;white-space:nowrap}
     .subscribe-nav:hover{background:var(--accent);color:#fff}
     #subscribe{scroll-margin-top:94px}
-    .newsletter-form{width:min(820px,100%);margin:0 auto}
+    .newsletter-form{width:100%;max-width:100%;margin:0 auto;display:flex;justify-content:center}
+    .newsletter-form > .formkit-form,.newsletter-form > form,.newsletter-form > div{margin-left:auto!important;margin-right:auto!important;max-width:100%}
+    .newsletter-section .wrap{display:flex;justify-content:center}
     .newsletter-section{padding:70px 0;background:var(--card)}
     @media(max-width:480px){nav{gap:10px}.brand{font-size:1.25rem}.subscribe-nav{font-size:.79rem;padding:6px 10px}}
     @media(max-width:800px){
