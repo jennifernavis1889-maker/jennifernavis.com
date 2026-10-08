@@ -73,14 +73,22 @@
     footer{padding:36px 0 54px;color:var(--muted);font-size:.9rem}
     .subscribe-nav{display:inline-block;border:1px solid var(--accent);border-radius:999px;padding:7px 16px;color:var(--accent);font-size:.88rem;font-weight:600;white-space:nowrap}
     .subscribe-nav:hover{background:var(--accent);color:#fff}
+    .nav-actions{display:flex;align-items:center;gap:10px}
+    .mobile-menu-toggle{display:none;border:1px solid var(--accent);background:transparent;color:var(--accent);border-radius:999px;padding:7px 12px;font:inherit;font-size:.88rem;font-weight:600;cursor:pointer}
+    .mobile-menu{display:none;border-top:1px solid var(--line);padding:10px 0 16px}
+    .mobile-menu a{display:block;padding:10px 0;font-size:1rem}
+    .mobile-menu a:hover{color:var(--accent)}
     #subscribe{scroll-margin-top:94px}
     .newsletter-form{width:100%;max-width:100%;margin:0 auto;display:flex;justify-content:center}
     .newsletter-form > .formkit-form,.newsletter-form > form,.newsletter-form > div{margin-left:auto!important;margin-right:auto!important;max-width:100%}
     .newsletter-section .wrap{display:flex;justify-content:center}
     .newsletter-section{padding:70px 0;background:var(--card)}
-    @media(max-width:480px){nav{gap:10px}.brand{font-size:1.25rem}.subscribe-nav{font-size:.79rem;padding:6px 10px}}
+    @media(max-width:480px){nav{gap:10px}.brand{font-size:1.25rem}.subscribe-nav{font-size:.79rem;padding:6px 10px}.mobile-menu-toggle{font-size:.79rem;padding:6px 10px}}
     @media(max-width:800px){
       .links{display:none}
+      .mobile-menu-toggle{display:inline-block}
+      .mobile-menu{display:block}
+      .mobile-menu[hidden]{display:none}
       .hero,.book,.about,.contact-card,.galdyr-layout{grid-template-columns:1fr}
       .hero{padding:58px 0;gap:34px}
       .hero-feature{max-width:620px;width:100%;margin:0 auto}
@@ -103,8 +111,20 @@
         <a href="/lines/">Lines</a>
         <a href="#contact">Contact</a>
       </div>
-      <a class="subscribe-nav" href="#subscribe">Subscribe</a>
+      <div class="nav-actions">
+        <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+        <a class="subscribe-nav" href="#subscribe">Subscribe</a>
+      </div>
     </nav>
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <a href="#about">About</a>
+      <a href="#books">Books</a>
+      <a href="/poetry/">Poetry</a>
+      <a href="/journal/">Journal</a>
+      <a href="/fragments/">Fragments</a>
+      <a href="/lines/">Lines</a>
+      <a href="#contact">Contact</a>
+    </div>
   </div>
 </header>
 
@@ -255,6 +275,21 @@
   <div class="wrap">© <span id="year"></span> Jennifer Navis. Thanks for reading.</div>
 </footer>
 
-<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script>
+  document.getElementById('year').textContent=new Date().getFullYear();
+  const menuButton=document.querySelector('.mobile-menu-toggle');
+  const mobileMenu=document.getElementById('mobile-menu');
+  if(menuButton&&mobileMenu){
+    menuButton.addEventListener('click',()=>{
+      const open=menuButton.getAttribute('aria-expanded')==='true';
+      menuButton.setAttribute('aria-expanded',String(!open));
+      mobileMenu.hidden=open;
+    });
+    mobileMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
+      menuButton.setAttribute('aria-expanded','false');
+      mobileMenu.hidden=true;
+    }));
+  }
+</script>
 </body>
 </html>
