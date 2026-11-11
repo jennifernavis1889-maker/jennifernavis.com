@@ -72,6 +72,20 @@
     .galdyr-box h2{font-style:italic;margin:10px 0 18px}
     .galdyr-box .lead{font-family:"Cormorant Garamond",serif;font-size:1.8rem;line-height:1.3}
     .galdyr-box p{color:var(--muted)}
+    .galdyr-status{display:inline-flex;align-items:center;gap:8px;margin-top:10px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--accent);font-size:.82rem;font-weight:600}
+    .currently{background:var(--card)}
+    .currently-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:52px;align-items:start}
+    .currently-list{display:grid;gap:14px}
+    .currently-item{padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:var(--paper)}
+    .currently-label{display:block;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-size:.7rem;font-weight:600;margin-bottom:5px}
+    .currently-item p{margin:0;color:var(--ink);font-family:"Cormorant Garamond",serif;font-size:1.45rem;line-height:1.28}
+    .newsletter-wrap{width:min(820px,calc(100% - 40px));margin:auto;text-align:center}
+    .newsletter-copy{margin:0 auto 30px;max-width:650px}
+    .newsletter-copy h2{margin-bottom:16px}
+    .newsletter-copy p{margin:0;color:var(--muted)}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .footer-links{display:flex;gap:16px;flex-wrap:wrap}
+    .footer-links a:hover{color:var(--accent)}
     .about{display:grid;grid-template-columns:.75fr 1.25fr;gap:54px;align-items:start}
     .about-side{display:flex;flex-direction:column;gap:28px}
     .about-photo{width:100%;max-width:340px;aspect-ratio:4/5;object-fit:cover;border-radius:24px;border:1px solid var(--line);box-shadow:var(--shadow)}
@@ -103,7 +117,7 @@
       .mobile-menu-toggle{display:inline-block}
       .mobile-menu{display:block}
       .mobile-menu[hidden]{display:none}
-      .hero,.book,.about,.contact-card,.galdyr-layout{grid-template-columns:1fr}
+      .hero,.book,.about,.contact-card,.galdyr-layout,.currently-grid{grid-template-columns:1fr}
       .hero{padding:58px 0;gap:34px}
       .hero-feature{max-width:620px;width:100%;margin:0 auto}
       .hero-feature img{height:300px}
@@ -236,6 +250,30 @@
         <p>That's about all I'm willing to reveal for now.</p>
         <p>I'm still working on the plot, changing things here and there, and occasionally wondering why I decided to make my life difficult by inventing an entire kingdom.</p>
         <p>For now, I'm calling it <em>Galdyr</em>. Whether that name survives until publication is another question entirely.</p>
+        <div class="galdyr-status">Currently in development. The kingdom is still misbehaving.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="currently" id="currently">
+    <div class="wrap currently-grid">
+      <div>
+        <div class="eyebrow">Currently…</div>
+        <h2>A few things taking up space in my head.</h2>
+      </div>
+      <div class="currently-list">
+        <div class="currently-item">
+          <span class="currently-label">Writing</span>
+          <p><em>Galdyr</em>. Slowly building a kingdom and occasionally wondering why I decided to invent one.</p>
+        </div>
+        <div class="currently-item">
+          <span class="currently-label">Collecting</span>
+          <p>Lines, apparently faster than I know what to do with them.</p>
+        </div>
+        <div class="currently-item">
+          <span class="currently-label">As usual</span>
+          <p>Starting ideas before finishing the previous ones. I'm working on that. Apparently.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -269,9 +307,16 @@
   </section>
 
   <section class="newsletter-section" aria-label="Letters from Jennifer subscription">
-    <div class="wrap"><div class="newsletter-form" id="subscribe" aria-label="Subscribe to Letters from Jennifer">
-    <script async data-uid="54e875fe75" src="https://jennifer-navis-2.kit.com/54e875fe75/index.js"></script>
-  </div></div>
+    <div class="newsletter-wrap">
+      <div class="newsletter-copy">
+        <div class="eyebrow">Letters from Jennifer</div>
+        <h2>Come along for the next thought.</h2>
+        <p>A little poetry, a few stories, occasional rambles and whatever else finds its way onto the page. I'll write when I have something worth sharing. No unnecessary emails just for the sake of filling your inbox.</p>
+      </div>
+      <div class="newsletter-form" id="subscribe" aria-label="Subscribe to Letters from Jennifer">
+        <script async data-uid="54e875fe75" src="https://jennifer-navis-2.kit.com/54e875fe75/index.js"></script>
+      </div>
+    </div>
   </section>
 
   <section id="contact">
@@ -293,7 +338,17 @@
 </main>
 
 <footer>
-  <div class="wrap">© <span id="year"></span> Jennifer Navis. Thanks for reading.</div>
+  <div class="wrap footer-inner">
+    <div>© <span id="year"></span> Jennifer Navis. Thanks for reading.</div>
+    <div class="footer-links" aria-label="Footer navigation">
+      <a href="/poetry/">Poetry</a>
+      <a href="/journal/">Journal</a>
+      <a href="/lines/">Lines</a>
+      <a href="#subscribe">Subscribe</a>
+      <a href="mailto:hello@jennifernavis.com">Email</a>
+      <a href="https://www.instagram.com/jennifernavis/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
 </footer>
 
 <script>
