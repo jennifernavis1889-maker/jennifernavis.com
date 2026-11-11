@@ -48,16 +48,6 @@
     .section-intro{max-width:760px}
     .section-intro .lead{font-family:"Cormorant Garamond",serif;font-size:2.25rem;line-height:1.2;margin:14px 0 26px}
     .section-intro p{color:var(--muted);font-size:1.02rem}
-    .recent-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:32px}
-    .recent-head p{max-width:560px;margin:0;color:var(--muted)}
-    .recent-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;max-width:760px}
-    .recent-card{display:block;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--shadow);transition:transform .2s ease,box-shadow .2s ease}
-    .recent-card:hover{transform:translateY(-2px);box-shadow:0 20px 46px rgba(45,35,28,.12)}
-    .recent-meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:.82rem;margin-bottom:12px}
-    .recent-type{text-transform:uppercase;letter-spacing:.13em;color:var(--accent);font-weight:600;font-size:.72rem}
-    .recent-card h3{font-size:clamp(1.65rem,2.6vw,2.15rem);line-height:1.12;margin:0 0 10px}
-    .recent-card p{margin:0;color:var(--muted)}
-    .recent-card.line h3{font-size:clamp(1.55rem,2.5vw,2rem);font-weight:500}
     .book{display:grid;grid-template-columns:.72fr 1.28fr;gap:52px;align-items:center}
     .book-cover-wrap{max-width:340px;margin:auto;text-align:center}
     .book-cover{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 28px 60px rgba(35,29,26,.22);border:1px solid rgba(111,81,68,.12)}
@@ -99,8 +89,7 @@
       .mobile-menu-toggle{display:inline-block}
       .mobile-menu{display:block}
       .mobile-menu[hidden]{display:none}
-      .hero,.book,.about,.contact-card,.galdyr-layout,.recent-grid{grid-template-columns:1fr}
-      .recent-head{align-items:flex-start;flex-direction:column}
+      .hero,.book,.about,.contact-card,.galdyr-layout{grid-template-columns:1fr}
       .hero{padding:58px 0;gap:34px}
       .hero-feature{max-width:620px;width:100%;margin:0 auto}
       .hero-feature img{height:300px}
@@ -157,35 +146,15 @@
         <a class="btn" href="#books">Explore my books</a>
       </div>
     </div>
-    <a class="hero-feature" href="/journal/a-weekend-of-clothes-cocktails-and-other-things.html" aria-label="Read A Weekend of Clothes, Cocktails and Other Things">
-      <img src="/weekend_clothes_cocktail.jpg" alt="Illustration for A Weekend of Clothes, Cocktails and Other Things">
+    <a class="hero-feature" href="/poetry/dont.html" aria-label="Read Don't">
+      <img src="/Furious%20Tearful%20Cinematic%20Close-Up.png" alt="Artwork for Don't by Jennifer Navis">
       <div class="hero-feature-info">
-        <div class="eyebrow">From the Journal</div>
-        <h2>A Weekend of Clothes, Cocktails and Other Things</h2>
-        <span class="hero-feature-cta">Read the story →</span>
+        <div class="eyebrow">Latest · Poetry</div>
+        <h2>Don't</h2>
+        <span class="hero-feature-cta">Read the poem →</span>
       </div>
     </a>
   </div>
-
-  <section id="recent">
-    <div class="wrap">
-      <div class="recent-head">
-        <div>
-          <div class="eyebrow">Recently posted</div>
-          <h2>My latest piece.</h2>
-        </div>
-        <p>The newest thing I’ve posted, whether it’s a poem, a Journal entry or a Line.</p>
-      </div>
-
-      <div class="recent-grid">
-        <a class="recent-card" href="/poetry/dont.html">
-          <div class="recent-meta"><span class="recent-type">Poetry</span><span>9 November 2026</span></div>
-          <h3>Don't</h3>
-          <p>Don't let the rage in you burn out.</p>
-        </a>
-      </div>
-    </div>
-  </section>
 
   <section id="journal">
     <div class="narrow section-intro">
