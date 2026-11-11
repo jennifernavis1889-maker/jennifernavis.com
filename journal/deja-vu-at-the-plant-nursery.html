@@ -333,6 +333,48 @@
   applyReadingTheme(initialTheme);
   themeButtons.forEach(btn=>btn.addEventListener('click',()=>applyReadingTheme(btn.dataset.themeChoice)));
 
+  const readingProgressKey='jennifer-reading-progress';
+  const readingPath=window.location.pathname;
+  const readingTitle="Déjà Vu at the Plant Nursery";
+
+  function saveReadingProgress(){
+    try{
+      const maxScroll=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
+      const y=Math.max(0,window.scrollY);
+      const percent=Math.min(100,(y/maxScroll)*100);
+      if(percent>=94 || maxScroll-y<420){
+        const saved=JSON.parse(localStorage.getItem(readingProgressKey)||'null');
+        if(saved && saved.path===readingPath) localStorage.removeItem(readingProgressKey);
+        return;
+      }
+      if(y>300){
+        localStorage.setItem(readingProgressKey,JSON.stringify({
+          path:readingPath,
+          title:readingTitle,
+          y:Math.round(y),
+          percent:Number(percent.toFixed(1)),
+          updated:Date.now()
+        }));
+      }
+    }catch(e){}
+  }
+
+  let readingProgressTimer;
+  window.addEventListener('scroll',()=>{
+    clearTimeout(readingProgressTimer);
+    readingProgressTimer=setTimeout(saveReadingProgress,180);
+  },{passive:true});
+  window.addEventListener('pagehide',saveReadingProgress);
+
+  try{
+    const params=new URLSearchParams(window.location.search);
+    const saved=JSON.parse(localStorage.getItem(readingProgressKey)||'null');
+    if(params.get('continue')==='1' && saved && saved.path===readingPath && saved.y>300){
+      requestAnimationFrame(()=>requestAnimationFrame(()=>window.scrollTo({top:saved.y,behavior:'auto'})));
+      history.replaceState(null,'',readingPath);
+    }
+  }catch(e){}
+
   const shareTitle='Déjà Vu at the Plant Nursery';
   const shareText='Déjà Vu at the Plant Nursery by Jennifer Navis';
   const shareUrl=window.location.href;
