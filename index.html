@@ -64,6 +64,16 @@
     .hero-feature h2{font-size:clamp(2rem,3vw,2.75rem);line-height:1.08;margin:10px 0 12px}
     .hero-feature-cta{font-size:.91rem;color:var(--accent);font-weight:600}
     .hero-feature:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+    .continue-reading{padding:0 0 58px;border-top:0}
+    .continue-card{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:20px 24px;border:1px solid var(--line);border-radius:20px;background:var(--card);box-shadow:var(--shadow)}
+    .continue-card[hidden]{display:none}
+    .continue-copy{min-width:0}
+    .continue-copy .eyebrow{margin-bottom:5px}
+    .continue-title{font-family:"Cormorant Garamond",serif;font-size:1.65rem;font-weight:600;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .continue-meta{margin-top:6px;color:var(--muted);font-size:.86rem}
+    .continue-link{white-space:nowrap;color:var(--accent);font-weight:600}
+    .continue-progress{height:3px;background:var(--line);border-radius:999px;margin-top:12px;overflow:hidden}
+    .continue-progress span{display:block;height:100%;width:0;background:var(--accent);border-radius:inherit}
     .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:.75rem;color:var(--accent);font-weight:600}
     h1,h2,h3{font-family:"Cormorant Garamond",serif;line-height:1.06;margin:0}
     h1{font-size:clamp(3.6rem,8vw,7.4rem);font-weight:600;letter-spacing:-.03em}
@@ -147,6 +157,8 @@
       .mobile-menu[hidden]{display:none}
       .hero,.book,.about,.contact-card,.galdyr-layout,.currently-grid{grid-template-columns:1fr}
       .hero{padding:58px 0;gap:34px}
+      .continue-card{grid-template-columns:1fr;gap:14px}
+      .continue-link{white-space:normal}
       .hero-feature{max-width:620px;width:100%;margin:0 auto}
       .hero-feature img{height:300px}
       .contact-card{padding:30px}
@@ -216,6 +228,20 @@
       </div>
     </a>
   </div>
+
+  <section class="continue-reading" aria-label="Continue reading">
+    <div class="wrap">
+      <a class="continue-card" id="continue-card" href="#" hidden>
+        <div class="continue-copy">
+          <div class="eyebrow">Continue reading</div>
+          <div class="continue-title" id="continue-title"></div>
+          <div class="continue-meta" id="continue-meta"></div>
+          <div class="continue-progress" aria-hidden="true"><span id="continue-progress"></span></div>
+        </div>
+        <span class="continue-link">Pick up where you left off →</span>
+      </a>
+    </div>
+  </section>
 
   <section id="journal">
     <div class="narrow section-intro">
@@ -393,6 +419,21 @@
   }
   applyReadingTheme(document.documentElement.dataset.theme||'day');
   themeButtons.forEach(btn=>btn.addEventListener('click',()=>applyReadingTheme(btn.dataset.themeChoice)));
+
+  const continueCard=document.getElementById('continue-card');
+  if(continueCard){
+    try{
+      const saved=JSON.parse(localStorage.getItem('jennifer-reading-progress')||'null');
+      if(saved && saved.path && saved.title && saved.y>300 && saved.percent<94){
+        const pct=Math.max(1,Math.min(93,Math.round(saved.percent||0)));
+        continueCard.href=saved.path+'?continue=1';
+        document.getElementById('continue-title').textContent=saved.title;
+        document.getElementById('continue-meta').textContent=pct+'% read';
+        document.getElementById('continue-progress').style.width=pct+'%';
+        continueCard.hidden=false;
+      }
+    }catch(e){}
+  }
 
   const menuButton=document.querySelector('.mobile-menu-toggle');
   const mobileMenu=document.getElementById('mobile-menu');
