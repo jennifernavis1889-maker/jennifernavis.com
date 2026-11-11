@@ -16,12 +16,16 @@
     :root{
       --ink:#27231f;--muted:#756f68;--paper:#f7f2e9;--card:#fffdf8;--line:#ddd2c3;
       --accent:#6f5144;--accent2:#b28b72;--shadow:0 18px 50px rgba(45,35,28,.08);
-      --header-bg:rgba(247,242,233,.92);--section-line:rgba(111,81,68,.13)
+      --header-bg:rgba(247,242,233,.92);--section-line:rgba(111,81,68,.13);
+      --contact-bg:#27231f;--contact-ink:#fffdf8;--contact-muted:#d8cec7;--contact-accent:#cdb5a6;
+      --footer-bg:#fffdf8
     }
     :root[data-theme="night"]{
       --ink:#f2ece4;--muted:#beb4aa;--paper:#171513;--card:#211e1b;--line:#403832;
       --accent:#d5ab90;--accent2:#a9826c;--shadow:0 18px 50px rgba(0,0,0,.24);
-      --header-bg:rgba(23,21,19,.93);--section-line:#342e29
+      --header-bg:rgba(23,21,19,.93);--section-line:#342e29;
+      --contact-bg:#26211e;--contact-ink:#f7f2e9;--contact-muted:#c9beb5;--contact-accent:#d5ab90;
+      --footer-bg:#211e1b
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -83,18 +87,25 @@
     .newsletter-copy{margin:0 auto 30px;max-width:650px}
     .newsletter-copy h2{margin-bottom:16px}
     .newsletter-copy p{margin:0;color:var(--muted)}
-    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-    .footer-links{display:flex;gap:16px;flex-wrap:wrap}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+    .footer-identity{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+    .footer-name{font-family:"Cormorant Garamond",serif;font-size:1.35rem;font-weight:700;color:var(--ink)}
+    .footer-links{display:flex;gap:18px;flex-wrap:wrap}
+    .footer-links a{color:var(--muted)}
     .footer-links a:hover{color:var(--accent)}
     .about{display:grid;grid-template-columns:.75fr 1.25fr;gap:54px;align-items:start}
     .about-side{display:flex;flex-direction:column;gap:28px}
     .about-photo{width:100%;max-width:340px;aspect-ratio:4/5;object-fit:cover;border-radius:24px;border:1px solid var(--line);box-shadow:var(--shadow)}
     .about-copy p{color:var(--muted);margin-top:0;margin-bottom:1.1rem}
     .about-copy .short{font-family:"Cormorant Garamond",serif;color:var(--ink);font-size:1.6rem;line-height:1.3}
-    .contact-card{background:var(--ink);color:#fff;border-radius:28px;padding:48px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
-    .contact-card h2{font-size:3.3rem}
-    .contact-card p{color:#d8cec7;max-width:720px}
-    footer{padding:36px 0 54px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--section-line)}
+    #contact{padding:72px 0}
+    .contact-card{background:var(--contact-bg);color:var(--contact-ink);border:1px solid var(--line);border-radius:28px;padding:48px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;box-shadow:var(--shadow)}
+    .contact-card .eyebrow{color:var(--contact-accent)}
+    .contact-card h2{font-size:3.3rem;color:var(--contact-ink)}
+    .contact-card p{color:var(--contact-muted);max-width:720px}
+    .contact-card .btn{border-color:var(--contact-accent);color:var(--contact-ink)}
+    .contact-card .btn:hover{background:var(--contact-accent);color:var(--contact-bg)}
+    footer{padding:30px 0 34px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line);background:var(--footer-bg)}
     .subscribe-nav{display:inline-block;border:1px solid var(--accent);border-radius:999px;padding:7px 16px;color:var(--accent);font-size:.88rem;font-weight:600;white-space:nowrap}
     .subscribe-nav:hover{background:var(--accent);color:var(--paper)}
     .nav-actions{display:flex;align-items:center;gap:10px}
@@ -122,6 +133,7 @@
       .hero-feature{max-width:620px;width:100%;margin:0 auto}
       .hero-feature img{height:300px}
       .contact-card{padding:30px}
+      .footer-inner{align-items:flex-start;flex-direction:column}
     }
   
     .back-to-top{position:fixed;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line,rgba(111,81,68,.18));background:var(--card,#fffdf8);color:var(--ink,#27231f);display:grid;place-items:center;font-size:1.25rem;box-shadow:0 10px 28px rgba(0,0,0,.12);cursor:pointer;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease,visibility .2s ease;z-index:50}
@@ -323,14 +335,14 @@
     <div class="wrap">
       <div class="contact-card">
         <div>
-          <div class="eyebrow" style="color:#cdb5a6">Contact</div>
+          <div class="eyebrow">Contact</div>
           <h2>Say hello.</h2>
           <p>One of my favourite things about writing is discovering that something very personal can still make a complete stranger feel understood.</p>
           <p>So if something here reminded you of yourself, made you laugh, made you uncomfortable, or stayed with you longer than you expected, tell me. I’d genuinely love to know.</p>
         </div>
         <div class="btns">
-          <a class="btn" style="border-color:#fff;color:#fff" href="mailto:hello@jennifernavis.com">Email Jennifer</a>
-          <a class="btn" style="border-color:#fff;color:#fff" href="https://www.instagram.com/jennifernavis/" target="_blank" rel="noopener" aria-label="Jennifer Navis on Instagram">Instagram</a>
+          <a class="btn" href="mailto:hello@jennifernavis.com">Email Jennifer</a>
+          <a class="btn" href="https://www.instagram.com/jennifernavis/" target="_blank" rel="noopener" aria-label="Jennifer Navis on Instagram">Instagram</a>
         </div>
       </div>
     </div>
@@ -339,7 +351,10 @@
 
 <footer>
   <div class="wrap footer-inner">
-    <div>© <span id="year"></span> Jennifer Navis. Thanks for reading.</div>
+    <div class="footer-identity">
+      <span class="footer-name">Jennifer Navis</span>
+      <span>© <span id="year"></span> · Thanks for reading.</span>
+    </div>
     <div class="footer-links" aria-label="Footer navigation">
       <a href="/poetry/">Poetry</a>
       <a href="/journal/">Journal</a>
