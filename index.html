@@ -8,18 +8,28 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    try{document.documentElement.dataset.theme=localStorage.getItem('reading-theme')||'day'}
+    catch(e){document.documentElement.dataset.theme='day'}
+  </script>
   <style>
     :root{
       --ink:#27231f;--muted:#756f68;--paper:#f7f2e9;--card:#fffdf8;--line:#ddd2c3;
-      --accent:#6f5144;--accent2:#b28b72;--shadow:0 18px 50px rgba(45,35,28,.08)
+      --accent:#6f5144;--accent2:#b28b72;--shadow:0 18px 50px rgba(45,35,28,.08);
+      --header-bg:rgba(247,242,233,.92);--section-line:rgba(111,81,68,.13)
+    }
+    :root[data-theme="night"]{
+      --ink:#f2ece4;--muted:#beb4aa;--paper:#171513;--card:#211e1b;--line:#403832;
+      --accent:#d5ab90;--accent2:#a9826c;--shadow:0 18px 50px rgba(0,0,0,.24);
+      --header-bg:rgba(23,21,19,.93);--section-line:#342e29
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;transition:background .2s ease,color .2s ease}
     a{color:inherit;text-decoration:none}
     .wrap{width:min(1120px,calc(100% - 40px));margin:auto}
     .narrow{width:min(820px,calc(100% - 40px));margin:auto}
-    header{position:sticky;top:0;z-index:20;background:rgba(247,242,233,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(111,81,68,.12)}
+    header{position:sticky;top:0;z-index:20;background:var(--header-bg);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
     nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
     .brand{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.45rem;letter-spacing:.03em}
     .links{display:flex;gap:22px;font-size:.92rem}
@@ -43,8 +53,8 @@
     .stacked-lines span{display:block;margin:4px 0}
     .btns{display:flex;gap:12px;flex-wrap:wrap}
     .btn{display:inline-block;padding:12px 18px;border:1px solid var(--ink);border-radius:999px;font-weight:600;font-size:.92rem}
-    .btn.primary{background:var(--ink);color:white}
-    section{padding:88px 0;border-top:1px solid rgba(111,81,68,.13)}
+    .btn.primary{background:var(--ink);color:var(--paper)}
+    section{padding:88px 0;border-top:1px solid var(--section-line)}
     .section-intro{max-width:760px}
     .section-intro .lead{font-family:"Cormorant Garamond",serif;font-size:2.25rem;line-height:1.2;margin:14px 0 26px}
     .section-intro p{color:var(--muted);font-size:1.02rem}
@@ -70,10 +80,14 @@
     .contact-card{background:var(--ink);color:#fff;border-radius:28px;padding:48px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
     .contact-card h2{font-size:3.3rem}
     .contact-card p{color:#d8cec7;max-width:720px}
-    footer{padding:36px 0 54px;color:var(--muted);font-size:.9rem}
+    footer{padding:36px 0 54px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--section-line)}
     .subscribe-nav{display:inline-block;border:1px solid var(--accent);border-radius:999px;padding:7px 16px;color:var(--accent);font-size:.88rem;font-weight:600;white-space:nowrap}
-    .subscribe-nav:hover{background:var(--accent);color:#fff}
+    .subscribe-nav:hover{background:var(--accent);color:var(--paper)}
     .nav-actions{display:flex;align-items:center;gap:10px}
+    .theme-toggle{display:inline-flex;align-items:center;padding:3px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
+    .theme-toggle button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:.78rem;font-weight:600;padding:7px 10px;border-radius:999px;cursor:pointer}
+    .theme-toggle button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+    .theme-toggle button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     .mobile-menu-toggle{display:none;border:1px solid var(--accent);background:transparent;color:var(--accent);border-radius:999px;padding:7px 12px;font:inherit;font-size:.88rem;font-weight:600;cursor:pointer}
     .mobile-menu{display:none;border-top:1px solid var(--line);padding:10px 0 16px}
     .mobile-menu a{display:block;padding:10px 0;font-size:1rem}
@@ -83,7 +97,7 @@
     .newsletter-form > .formkit-form,.newsletter-form > form,.newsletter-form > div{margin-left:auto!important;margin-right:auto!important;max-width:100%}
     .newsletter-section .wrap{display:flex;justify-content:center}
     .newsletter-section{padding:70px 0;background:var(--card)}
-    @media(max-width:480px){nav{gap:10px}.brand{font-size:1.25rem}.subscribe-nav{font-size:.79rem;padding:6px 10px}.mobile-menu-toggle{font-size:.79rem;padding:6px 10px}}
+    @media(max-width:480px){nav{gap:8px}.brand{font-size:1.2rem}.subscribe-nav{font-size:.74rem;padding:6px 8px}.mobile-menu-toggle{font-size:.74rem;padding:6px 8px}.theme-toggle button{font-size:.72rem;padding:6px 7px}}
     @media(max-width:800px){
       .links{display:none}
       .mobile-menu-toggle{display:inline-block}
@@ -117,6 +131,10 @@
       </div>
       <div class="nav-actions">
         <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+        <div class="theme-toggle" role="group" aria-label="Reading theme">
+          <button type="button" data-theme-choice="day" aria-pressed="true">☀ Day</button>
+          <button type="button" data-theme-choice="night" aria-pressed="false">☾ Night</button>
+        </div>
         <a class="subscribe-nav" href="#subscribe">Subscribe</a>
       </div>
     </nav>
@@ -280,6 +298,15 @@
 
 <script>
   document.getElementById('year').textContent=new Date().getFullYear();
+  const themeButtons=document.querySelectorAll('[data-theme-choice]');
+  function applyReadingTheme(theme){
+    document.documentElement.dataset.theme=theme;
+    try{localStorage.setItem('reading-theme',theme)}catch(e){}
+    themeButtons.forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.themeChoice===theme)));
+  }
+  applyReadingTheme(document.documentElement.dataset.theme||'day');
+  themeButtons.forEach(btn=>btn.addEventListener('click',()=>applyReadingTheme(btn.dataset.themeChoice)));
+
   const menuButton=document.querySelector('.mobile-menu-toggle');
   const mobileMenu=document.getElementById('mobile-menu');
   if(menuButton&&mobileMenu){
